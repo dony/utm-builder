@@ -1,0 +1,162 @@
+ 
+
+<!DOCTYPE html>
+<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
+  <head>
+
+<meta charset="utf-8">
+<title>URL + UTM Builder</title>
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+</head>
+
+<body>
+
+<div class="head-area">
+ 
+      <description>URL + UTM builder  /description>
+  </div>
+
+ 
+
+    <p>  Your URL will update as you go and display at the bottom of the page. </p>
+
+    <p><b>Step 1 -</b> Enter the desired url :
+      <br />
+      <small><font style="color: #B22222;">Required:</font>This is the URL of your page. It can be any web page. For example, http://www.example.com/page.html</i></small>
+      <br />
+      <input id="url" placeholder="e.g. www.example.com/education/" onchange="displayVals ()">
+      </input>
+
+      <br />
+
+      <tt id="urlouttext" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; color: rgba(0, 51, 91, 1);"></tt>
+    </p>
+
+    <script>
+      function displayVals() {
+        var urlout = $("#url").val();
+        $("#urlouttext").html("<b>Your full url with UTM codes: </b><br />" + urlout + "?");
+      }
+      $("select").change(displayVals);
+      displayVals();
+    </script>
+
+    <form>
+
+      <p><b>Step 2 -</b> Select your campaign medium:
+        <Br>
+        <small><font style="color: #B22222;">Required:</font>This is the medium such as social media, another website or a television ad.</small>
+        <br />
+
+        <select name="utm_medium">
+          <option>Select One</option>
+          <option>social</option>
+          <option>paid-social</option>
+          <option>email</option>
+          <option>newsletter</option>
+          <option>displayad</option>
+          <option>cpc</option>
+          <option>intranet</option>
+          <option>postcard</option>
+          <option>television</option>
+          <option>radio</option>
+          <option>website</option>
+        </select>
+      </p>
+
+      <p>
+        <B>Step 3 -</b> Enter your source:
+        <br />
+        <small><font style="color: #B22222;">Required:</font>This is the source of the campaign. It is one step down from medium. For example, if the medium is social, the source could be twitter.</small>
+        <br />
+        <input type="text" name="utm_source" placeholder="e.g. google ads" onchange="showValues()">
+      </p>
+
+      <p>
+        <B>Step 4 -</b> Enter your campaign name:
+        <BR>
+        <small><font style="color: #B22222;">Required:</font>This is the name of the campaign. Your campaign name MUST have a unique name such as  May-2019-LaborDay</small>
+        <br />
+        <input type="text" name="utm_campaign" placeholder="e.g. dtmr-may2015-roadsafety" onchange="showValues()">
+        <br />
+      </p>
+
+      <p>
+        <B>Step 5 -</b> Enter any paid search terms:
+        <BR>
+        <small><i>Optional.</i> If you're using paid search, enter your search terms here with a + separating words e.g. road+safety. If not being used, leave blank. </small>
+        <br />
+        <input type="text" name="utm_term" placeholder="e.g. blue+widgets" onchange="showValues()">
+        <br />
+
+      </p>
+
+      <p>
+        <B>Step 6 -</b> Enter your campaign content:
+        <BR>
+        <small><font style="color: #B22222;">Required:</font> </small>
+        <br />
+        <input type="text" name="utm_content" placeholder="e.g. brisbane-ad1" onchange="showValues()">
+        <br />
+        <B>Press 'enter' once you've finished typing.</b>
+
+      </p>
+
+      <p>All done? If not, you can go back and edit the fields as much as you like. </p>
+
+
+      <!-- <select name="multiple" multiple="multiple">
+    <option selected="selected">Multiple</option>
+    <option>Multiple2</option>
+    <option selected="selected">Multiple3</option>
+    </select>
+    -->
+
+
+      <!-- 
+    <input type="checkbox" name="check" value="check1" id="ch1">
+    <label for="ch1">check1</label>
+    <input type="checkbox" name="check" value="check2" checked="checked" id="ch2">
+    <label for="ch2">check2</label>
+
+    <br><br>
+    <input type="radio" name="radio" value="radio1" checked="checked" id="r1">
+    <label for="r1">radio1</label>
+    <input type="radio" name="radio" value="radio2" id="r2">
+    <label for="r2">radio2</label>
+    -->
+
+    </form>
+
+  </div>
+
+  <div class="results">
+
+    <p><font style="color: rgba(0, 126, 176, 1); font-size: 26px;">Here is <u>your</u> swanky new URL with UTM codes attached.</font>
+      <br /> As long as you filled out each step, you should see your answers in the URL below:
+
+      <br />
+      <br />
+      <font style="color: rgba(120, 185, 0, 1);"></font><tt id="results" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; color: rgba(0, 51, 91, 1);"></tt>
+
+    </p>
+ 
+    <script>
+        $("#results").before($("#urlouttext"));
+
+        function showValues() {
+          var str = $("form").serialize();
+          $("#results").text(str);
+        }
+        $("input[type='checkbox'], input[type='radio']").on("click", showValues);
+        $("select").on("change", showValues);
+        showValues();
+      
+    </script>
+ 
+  </div>
+
+</body>
+</html>
